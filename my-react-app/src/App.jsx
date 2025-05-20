@@ -1,15 +1,14 @@
-// Como estilizar componentes React com CSS
-// -------------------------------------------
-// Sem incluir pre-processadores ou frameworks
-
-// 1. Externo (bom para estilos globais ou projetos pequenos)
-// 2. Módulos (bom para componentes individuais com estilos únicos)
-// 3. Em linha (bom para componentes pequenos com estilos mínimos)
-
-import Button from './Button.jsx'
+import Student from "./Student.jsx"
 
 function App() {
-    return(<Button/>);
+    return(
+        <>
+        <Student name="Bob Esponja" age={30} isStudent={true}/>
+        <Student name="Patrick" age={42} isStudent={false}/>
+        <Student name="Lula Molusco" age={50} isStudent={false}/>
+        <Student name="Sandy Bochechas" age={27} isStudent={true}/>
+        </>
+    );
 }
 
 export default App
