@@ -1,11 +1,14 @@
-// click event = Interação quando um usuário clica em um elemento específico
+// useState() = Permite a criação de uma variável com estado (stateful) e uma função setter para atualizar seu valor no Virtual DOM
 
-import Button from "./Button.jsx"
-import ProfilePicture from "./ProfilePicture.jsx";
+
+import Counter from "./Counter.jsx";
+
+import MyComponent from "./MyComponent.jsx";
 
 function App() {
     
-    return (<ProfilePicture />);
+    return (<Counter />);
+    // return (<MyComponent />);
 }
 
 export default App
