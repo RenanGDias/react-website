@@ -1,33 +1,27 @@
-// updater function = função passada como parâmetro para uma função setState() para permitir atualizações seguras baseadas no estado anterior, não no estado atual, permitindo múltiplas atualizações de estado
-
 import React, {useState} from 'react';
 
 function MyComponent() {
 
-    const [count, setCount] = useState(0);
-
-    const increment = () => {
-        setCount(prevCount => prevCount + 1);
-        setCount(prevCount => prevCount + 1);
-        setCount(prevCount => prevCount + 1);
+    const [car, setCar] = useState({year: 2024, 
+                                    make: "Ford", 
+                                    model: "Mustang"});
+    
+    function handleYearChange(event) {
+        setCar(prevCar => ({...prevCar, year: event.target.value}));
     }
-
-    const decrement = () => {
-        setCount(prevCount => prevCount - 1);
-        setCount(prevCount => prevCount - 1);
-        setCount(prevCount => prevCount - 1);
+    function handleMakeChange(event) {
+        setCar(prevCar => ({...prevCar, make: event.target.value}));
     }
-
-    const reset = () => {
-        setCount(0);
+    function handleModelChange(event) {
+        setCar(prevCar => ({...prevCar, model: event.target.value}));
     }
-
-    return( <div className ="counter-container">
-                <p className ="count-display">{count}</p>
-                <button className="counter-button" onClick={decrement}>Decrement</button>
-                <button className="counter-button" onClick={reset}>Reset</button>
-                <button className="counter-button" onClick={increment}>Increment</button>
-            </div>)
+    return( <div>
+                <p>Your favorite car is: {car.year} {car.make} {car.model}</p>
+                
+                <input type="number" value={car.year} onChange={handleYearChange}/><br/>
+                <input type="text" value={car.make} onChange={handleMakeChange}/><br/>
+                <input type="text" value={car.model} onChange={handleModelChange}/><br/>
+            </div>);
 }
 
 export default MyComponent
