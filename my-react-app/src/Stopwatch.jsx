@@ -22,9 +22,11 @@ function Stopwatch() {
     }, [isRunning]);
 
     function start() {
-        setIsRunning(true);
-        startTimeRef.current = Date.now(); - elapsedTime;
-    }
+        if (!isRunning) {
+            startTimeRef.current = Date.now() - elapsedTime;
+            setIsRunning(true);
+        }
+}
 
     function stop() {
         setIsRunning(false);
