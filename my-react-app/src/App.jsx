@@ -1,10 +1,9 @@
-// useContext() = Gancho do React (hook) que permite o compartilhamento de valores entre diferentes níveis de componentes sem a necessidade de passá-los através de cada nível
 
-import ComponentA from "./ComponentA";
+import MyComponent from "./MyComponent";
 
 function App() {
     
-    return (<ComponentA />);
+    return (<MyComponent />);
 }
 
 export default App
