@@ -2,30 +2,33 @@ import { useEffect, useState } from "react";
 
 function MyComponent() {
 
-    const [count, setCount] = useState(0);
-    const [color, setColor] = useState("green");
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
 
     useEffect(() => {
-        document.title = `Color: ${count} ${color}`;
-    }, [count, color]);
+        window.addEventListener("resize", handleResize);
+        console.log("EVENT LISTENER ADDED");
 
-    function addCount() {
-        setCount(prevCount => prevCount + 1);
-    }
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            console.log("EVENT LISTENER REMOVED");
+        }
+    }, []);
 
-    function subtractCount() {
-        setCount(prevCount => prevCount - 1);
-    }
+    useEffect(() => {
+        document.title = `Size: ${width} x ${height}`;
+    }, [width, height]);
 
-    function changeColor() {
-        setColor(prevColor => prevColor === "green" ? "red" : "green");
+    
+
+    function handleResize() {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
     }
 
     return( <>
-                <p style={{color: color}}>Count: {count}</p>
-                <button onClick={addCount}>Add</button>
-                <button onClick={subtractCount}>Subtract</button><br />
-                <button onClick={changeColor}>Change color</button>
+                <p>Window Width: {width}</p>
+                <p>Window Height: {height}</p>
             </>);
 }
 
